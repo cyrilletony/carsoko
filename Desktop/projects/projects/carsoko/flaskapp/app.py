@@ -18,7 +18,7 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app.config['SECRET_KEY'] = "fjdnefwe4v33bnsjwwfjgyuadvcfqhefrwjrwefs" 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/carsoko'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tqubgrotinjsop:f88caf4ca2180d7aa8cfb24738a94b0cebad85eb97e1716f149812381bb7768c@ec2-3-229-252-6.compute-1.amazonaws.com:5432/d3au80c3sdcucc'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ybbuqrvpfqjspq:faf0abc5d0df53110e63a68609a11d5bc91d61443ea193dba971dc3440054ff7@ec2-34-197-84-74.compute-1.amazonaws.com:5432/d8u5rjabocacks'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 10
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 60
