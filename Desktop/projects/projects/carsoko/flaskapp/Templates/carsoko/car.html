@@ -1,0 +1,254 @@
+{% extends "base/base3.html" %}
+{% block main %}
+<style type="text/css">
+	.bi{
+		font-size: 20px;
+	}
+</style>
+<div class="container">
+<div class="p-2">
+<nav aria-label="breadcrumb ">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#">Library</a></li>
+  </ol>
+</nav>
+</div>
+</div>
+<section id="" class="">
+<div class="container">
+<div class="row">
+<!-- Carousel wrapper -->
+<div class="col-lg-8 px-4">
+<div id="carouselDarkVariant" class="carousel  slide carousel-fade carousel-dark" data-mdb-ride="carousel">
+  <div class="carousel-indicators"> 
+    {% for btn in car[12]%}
+    {% if loop.index0 == 0 %}
+    <button
+      data-mdb-target="#carouselDarkVariant"
+      data-mdb-slide-to="{{loop.index}}"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    {%else%}
+    <button
+      data-mdb-target="#carouselDarkVariant"
+      data-mdb-slide-to="{{loop.index}}"
+      aria-label="Slide 1"
+    ></button>
+    {%endif%}
+    {%endfor%}
+  </div>
+  <div class="carousel-inner">
+    {% for image in car[12]%}
+    {%if loop.index0 == 0%}
+    <div class="carousel-item active">
+      <img src="{{url_for('static', filename='Uploads')}}/{{image['filename']}}" class="d-block w-100 rounded-5" alt="Motorbike Smoke"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{image['view']}}</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    {%else %}
+    <div class="carousel-item">
+      <img src="{{url_for('static', filename='Uploads')}}/{{image['filename']}}" class="d-block w-100 rounded-5" alt="Motorbike Smoke"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{image['view']}}</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    {%endif%}
+    {%endfor%}
+  <button class="carousel-control-prev " type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
+</div>
+<h3>Description</h3>
+	<div class="desc2">
+	</div>
+<script type="text/javascript" charset="ASCII">
+	html = $.parseHTML(`{{desc}}`)
+	$('.desc2').html(html[0].data)
+</script>
+</div>
+<div class="col-lg-4 px-4">
+	<div class="">
+	<div>
+	<h class="fs-3 my-1">{{car[3]}} - {{car[4]}} - {{car[15]}} doors</h>
+	</div>
+	<p class="my-1">{{car[7]}} <i class="bi bi-dot text-danger"></i> {{car[5]}} <i class="bi bi-dot text-danger"></i> {{car[8]}} <i class="bi bi-dot text-danger"></i> {{car[10]}}</p>
+	<hr class="my-1">
+	<h3 class="text-danger">Kshs <span class="pricel">{{car[6]}}</span></h3>
+	<script type="text/javascript">
+		$('.pricel').html(({{car[6]}}).toLocaleString())
+	</script>
+	<div class="bg-white rounded-5 p-4">
+		<table class="w-100">
+			<tr>
+				<td>Make</td>
+				<td>{{car[3]}}</td>
+			</tr>
+			<tr>
+				<td>Model</td>
+				<td>{{car[4]}}</td>
+			</tr>
+			<tr>
+				<td>Colour</td>
+				<td>{{car[10]}}</td>
+			</tr>
+			<tr>
+				<td>Drive Type</td>
+				<td>{{car[16]}}</td>
+			</tr>
+			<tr>
+				<td>Transmission</td>
+				<td>{{car[17]}}</td>
+			</tr>
+			<tr>
+				<td>Condition</td>
+				<td>{{car[1]}}</td>
+			</tr>
+			<tr>
+				<td>Year</td>
+				<td>{{car[7]}}</td>
+			</tr>
+			<tr>
+				<td>Fuel Type</td>
+				<td>{{car[8]}}</td>
+			</tr>
+			<tr>
+				<td>Engine Size</td>
+				<td>{{car[19]}}</td>
+			</tr>
+			<tr>
+				<td>Doors</td>
+				<td>{{car[15]}}</td>
+			</tr>
+			<tr>
+				<td>Cylinders</td>
+				<td>{{car[18]}}</td>
+			</tr>
+				
+			<tr>
+				<td>VIN</td>
+				{%if car[20]%}
+				<td>{{car[20]}}</td>
+				{%else%}
+				<td>Unregistered</td>
+				{%endif%}
+			</tr>
+				
+		</table>
+	</div>
+	<hr>
+	<h3>Send Message</h3>
+		<div>
+			<form class="msgform" method="post" >
+			{{form1.csrf_token}}
+			<div class="row">	
+			<div class="col-md mb-3" >
+			 {{form1.name(class="form-control rounded-pill",id="msgname",placeholder="Name")}}
+			 
+			 {% for error in form1.name.errors %} 
+			 <span style="color:red;">{{error}} </span> 
+			 {% endfor %}
+			</div>
+			<div class="col-md mb-3" >
+			 {{form1.email(class="form-control rounded-pill",id="msgemail",placeholder="Email*")}}
+			 
+			 {% for error in form1.email.errors %} 
+			 <span style="color:red;">{{error}} </span> 
+			 {% endfor %}
+			</div>
+			<div class="col-md mb-3" >
+			 {{form1.phone(class="form-control rounded-pill",id="msgphone",placeholder="Phone*")}}
+			 
+			 {% for error in form1.phone.errors %} 
+			 <span style="color:red;">{{error}} </span> 
+			 {% endfor %}
+			</div>
+			</div>
+			<div class="col-md mb-3" >
+			 {{form1.message(class="form-control rounded-6",id="msgmessage", rows="6", placeholder="Message *")}}
+			 
+			 {% for error in form1.message.errors %} 
+			 <span style="color:red;">{{error}} </span> 
+			 {% endfor %}
+			</div>
+			<div class="d-flex justify-content-between">
+			<div class="form-check">
+	        <input class="form-check-input" required="" type="checkbox" value="" id="form1Example3" />
+	        <label class="form-check-label" for="form1Example3"> I accept the privacy policy </label>
+	      </div>
+	      <div>
+	      	<button type="submit" class="btn btn-md btn-danger msgsubmit">Send</button>
+	      </div>
+			</div>
+			</form>
+		</div>
+	<div class="d-flex justify-content-center my-3">
+	
+	<div class="me-2">
+		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhermit.co.ke%2Fservices.php%3Fservice_id%3D10%23item1&amp;src=sdkpreparse"><button class="btn btn-primary text-white btn-sm" style="font-size: 12px;"><i class="bi bi-facebook me-1" style="font-size: 12px;"></i> Share</button> </a>
+	</div>
+	<div>
+	<a class="twitter-share-button" target="_blank" 
+  href="https://twitter.com/share?url=https://hermit.co.ke/services.php?service_id=10#item1"
+  data-size="large"><button class="btn btn-info text-white btn-sm" style="font-size: 12px;"><i class="bi bi-twitter me-1" style="font-size: 12px;"></i>
+Tweet</button></a>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr>
+<section>
+	<div class="container">
+	<div class="row">
+	<div class="col-lg-8 px-4">
+<h3>Features</h3>
+<div class="bg-white p-3 rounded-5">
+<div class="row">
+	{%for feature in features%}
+		<div class="col-md-4 col-6 bg-light rounded-pill p-1"><span class=""><i class="bi bi-dot text-danger"></i> {{feature}}</span></div>
+	{%endfor%}
+</div>
+</div>
+
+</div>
+
+<div class="col-lg-4 px-4">
+	<h3>Location</h3>
+	<div class="col-12">
+		<div class="google-map">
+			<iframe frameborder="0" class="col-12" style="border:0; height: 400px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCt1265A4qvZy9HKUeA8J15AOC4SrCyZe4&q=Car Soko Ltd" allowfullscreen=""></iframe>
+	</div>
+	</div>
+	
+</div>
+</div>
+</div>
+</section>
+<hr>
+<section>
+	<div class="container">
+	<div class="row">
+	<div class="col-lg px-4">
+		<h3>Related</h3>
+	</div>
+	</div>
+	</div>
+
+</section>
+<hr>
+{%endblock%}

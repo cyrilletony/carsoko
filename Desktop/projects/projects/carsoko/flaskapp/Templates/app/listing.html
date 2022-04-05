@@ -1,0 +1,75 @@
+{% extends "base/base2.html" %}
+{% block body %}
+<script type="text/javascript">
+	$('#listing').addClass('active')
+</script>
+<main style="margin-top: 58px">
+	<style type="text/css">
+		.submenu1 .list-group-item{
+			display: inline-flex;
+			width: auto !important;
+			padding: 5px !important;
+			align-items: center;
+			font-size: 13px;
+		}
+		.submenu1 .list-group-item:hover{
+			background: grey;
+			color: white;
+		}
+		.submenu1 .list-group-item span{
+				display: block;
+			}
+		@media only screen and (max-width: 600px) {
+			.submenu1 .list-group-item{
+				width: auto !important;
+				padding: 5px !important;
+				align-items: center;
+				font-size: 17px;
+			}
+			.submenu1 .list-group-item span{
+				display: none !important;
+			}
+		}
+
+	</style>
+	<div class="container row m-0 p-0">
+	<div class="col-auto bg-primary p-0 m-0 rounded-3" >
+	<nav id=""  class="d-md-block ms-1 bg-primary" >
+      <div class="position-sticky position-fixed">
+        <div class="list-group position-sticky position-fixed bg-primary submenu1 list-group-flush mt-3" >
+          <a href="/admin/listing/cars" id="cars" class="list-group-item  bg-primary bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Listing" aria-current="true">
+            <i class="bi bi-list-check "></i><span class="ms-2">Listing</span>
+          </a>
+          <a href="/admin/listing/new_listing" id="new_listing" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Add Listing">
+            <i class="bi bi-plus-circle "></i><span class="ms-2">Add Listing </span>
+            
+          </a>
+          <a href="/admin/listing/condition" id="condition" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Condition"><i class="bi bi-balloon "></i><span class="ms-2">Condition</span></a>
+          <a href="/admin/listing/type" id="type" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Type"><i class="bi bi-code-square "></i><span class="ms-2">Type</span></a>
+          <a href="/admin/listing/make" id="make" class="list-group-item  bg-primary list-group-item-action py-1 ripple " data-mdb-toggle="tooltip" title="Make">
+            <i class="bi bi-app "></i><span class="ms-2">Make</span>
+          </a>
+          <a href="/admin/listing/model" id="model" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Model"><i class="bi bi-app-indicator "></i><span class="ms-2">Model</span></a>
+          <a href="/admin/listing/offer_type" id="offer_type" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Offer Type"><i class="fab fa-red-river "></i><span class="ms-2">Offer Type</span></a>
+          <a href="/admin/listing/drive_type" id="drive_type" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Drive Type"><i class="bi bi-fan "></i><span class="ms-2">Drive Type</span></a>
+          <a href="/admin/listing/transmission" id="transmission" class="list-group-item  bg-primary list-group-item-action py-2 ripple" data-mdb-toggle="tooltip" title="Transmision"><i class="bi bi-gear-wide-connected "></i><span class="ms-2">Transmision</span></a>
+          <a href="/admin/listing/engine_type" id="transmission" class="list-group-item  bg-primary list-group-item-action py-2 ripple" data-mdb-toggle="tooltip" title="Engine Type"><i class="bi bi-gear-wide-connected "></i><span class="ms-2">Engine Type</span></a>
+          <a href="/admin/listing/fuel_type" id="fuel_type" class="list-group-item  bg-primary list-group-item-action py-2 ripple" data-mdb-toggle="tooltip" title="Fuel Type"><i class="bi bi-droplet-half "></i><span class="ms-2">Fuel Type</span></a>
+          <a href="/admin/listing/cylinders" id="cylinders" class="list-group-item  bg-primary list-group-item-action py-2 ripple" data-mdb-toggle="tooltip" title="Cylinders"><i class="bi bi-gear "></i><span class="ms-2">Cylinders</span></a>
+          <a href="/admin/listing/color" id="color" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Color"><i class="bi bi-palette "></i><span class="ms-2">Colours</span></a>
+          <a href="/admin/listing/doors" id="doors" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Doors"><i class="bi bi-door-open "></i><span class="ms-2">Doors</span></a>
+          <a href="/admin/listing/features" id="features" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Features"><i class="bi bi-check2-square "></i><span class="ms-2">Features</span></a>
+          <a href="/admin/listing/safety_features" id="safety_features" class="list-group-item  bg-primary list-group-item-action py-1 ripple" data-mdb-toggle="tooltip" title="Safety Features"><i class="bi bi-exclamation-triangle "></i><span class="ms-2">Safety Features</span></a>
+        </div>
+      </div>
+    </nav>
+	</div>
+    <div class="col bg-white p-0">
+    <div class="mt-3 m-0 bg-clear container" style="min-height: 88vh; max-height: 88vh; overflow-y: auto; bottom: 0 !important;">
+    {% block listing %}
+	{% endblock %}
+	</div>
+    </div>
+	</div>
+</main>
+{%endblock%}

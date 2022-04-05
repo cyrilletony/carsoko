@@ -1,0 +1,140 @@
+{% extends "base/base3.html" %}
+{% block main %}
+<section>
+	<div class="container">
+	<div class="container">
+	<div class="p-2">
+	<nav aria-label="breadcrumb ">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"><a href="#">Search</a></li>
+	  </ol>
+	</nav>
+	</div>
+	</div>
+	<div>
+		<form action="/search"  method="post">
+       <div class="row  bg-light" style="border-radius: 30px;">
+        <div class="col-lg col-md my-2  mx-0 p-1">
+	     {{form.make(class="mak rounded-5  form-control sl",id="make2")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.model(class="mode rounded-5 col-md-12  form-control sl",id="model2")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.price(class="pric rounded-5 col-md-12  form-control sl",id="pric3")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.car_type(class="car_type rounded-5 col-md-12  form-control sl",id="car_type")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.fuel_type(class="fuel_type rounded-5 col-md-12  form-control sl",id="fuel_type")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.mileage(class="mileage rounded-5 col-md-12  form-control sl",id="mileage")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	     {{form.drive_type(class="drive_type rounded-5 col-md-12  form-control sl",id="drive_type")}}
+	  </div>
+	  <div class="col-lg-3 col-md my-2 mx-0 p-1">
+	  	<button type="submit" id="sub" class="btn col-md-12 btn-danger p-0 h-100" name="submit"><i class="bi bi-search"></i></button>
+	  </div>
+	</div>
+    </form>
+	</div>
+	<div class="row  h-100">
+	<hr>
+		<h3>{{type|length}} Results</h3>
+		<div class="col-lg col-md">
+			<div class="row p-1 px-0">
+			{% for car in type%}
+			{% if car[13]%}
+			<div class="col-lg-3 col-md p-2 rounded-5" >
+				<div class="bg-image border rounded-5 border-primary hover-overlay ripple">
+					<div class="ribbon-holder">
+				<div class="ribbon ribbon-holder">Featured</div>
+					<div class=" ">
+					{%if car[12]%}
+					<img src="{{url_for('static', filename='Uploads')}}/{{car[12][0]['filename']}}" class="img-fluid " />
+					{% else%}
+					<img src="{{url_for('static', filename='assets/images/looking-used-car.png')}}">
+					{%endif%}
+					  <a href="/listing/{{car[11]}}">
+					    <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
+					    	<p class="text-white p-2" style="float: right !important;"><i class="bi bi-image me-2"></i>{{car[12]|length}}</p>
+					    </div>
+					    <div class="bg-light text-dark  position-relative p-3">
+						<span>{{car[3]}} ~ {{car[4]}}</span><br>
+						<span><strong>Kshs. <span class="price{{car[11]}}">{{car[6]}}</span></strong></span><br>
+						<script type="text/javascript">
+							$('.price{{car[11]}}').html(({{car[6]}}).toLocaleString())
+						</script>
+						<hr class="p-0 my-2">
+						<span class=""><strong class="p-1 bg-danger text-white rounded-4"> {{car[7]}}</strong> - {{car[9]}} Kms - {{car[10]}}</span>
+					</div>
+					  </a>
+
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		{%else%}
+		<div class="col-lg-3 col-md p-2 rounded-5" >
+				<div class="bg-image border rounded-5 border-primary hover-overlay ripple">
+					<div class=" ">
+					{%if car[12]%}
+					<img src="{{url_for('static', filename='Uploads')}}/{{car[12][0]['filename']}}" class="img-fluid " />
+					{% else%}
+					<img src="{{url_for('static', filename='assets/images/looking-used-car.png')}}">
+					{%endif%}
+					  <a href="/listing/{{car[11]}}">
+					    <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
+					    	<p class="text-white p-2" style="float: right !important;"><i class="bi bi-image me-2"></i>{{car[12]|length}}</p>
+					    </div>
+					    <div class="bg-light text-dark  position-relative p-3">
+						<span>{{car[3]}} ~ {{car[4]}}</span><br>
+						<span><strong>Kshs. <span class="price{{car[11]}}">{{car[6]}}</span></strong></span><br>
+						<script type="text/javascript">
+							$('.price{{car[11]}}').html(({{car[6]}}).toLocaleString())
+						</script>
+						<hr class="p-0 my-2">
+						<span class=""><strong class="p-1 bg-danger text-white rounded-4"> {{car[7]}}</strong> - {{car[9]}} Kms - {{car[10]}}</span>
+					</div>
+					  </a>
+
+					</div>
+			</div>
+		</div>
+		{%endif%}
+		{%endfor%}
+			
+		</div>
+		</div>
+			
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+$('#make2').select2({placeholder:"Make"});
+$('#model2').select2({placeholder:"Model"});
+$('#pric3').select2({placeholder:"Max Price"});
+$('#car_type').select2({placeholder:"Type"});
+$('#fuel_type').select2({placeholder:"Fuel"});
+$('#mileage').select2({placeholder:"Mileage"});
+$('#drive_type').select2({placeholder:"Drive Type"});
+$('#features').selectize({placeholder:"Features"});
+$('#make2').change(function(){
+	var carmake = $('#make2').val();
+	$.ajax({
+    url:"/updater/"+carmake,
+    success:function(data){
+    	for (item of data.models){
+    		option = new Option(item.name,item.id, true, true)
+	    	$("#model2").append(option).trigger('change')
+	    }
+	}
+	});
+});
+</script>
+{%endblock%}

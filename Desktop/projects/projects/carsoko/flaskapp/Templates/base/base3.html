@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Carsoko Home</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"rel="stylesheet"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/css/style.css') }}">
+<link rel="icon" href="{{url_for('static', filename='assets/icons/icon2.png')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='user/css/admin.css') }}" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.js') }}"></script>
+<script src="https://cdn.tiny.cloud/1/cliim7sq2hqe4iw6so639oqlpl5l03rqlfgrdw2hvlsf4nih/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='fontawesome/js/all.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='user/js/admin.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.5.1/extensions/twitter.min.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0&appId=1055981344947876&autoLogAppEvents=1" nonce="XqxbtTY5"></script>
+<style type="text/css">
+	.sl{
+				height: 40px !important;
+			}
+			.select2-selection__rendered {
+			    line-height: 40px !important;
+			}
+			.select2-container .select2-selection--single {
+			    height: 40px !important;
+			}
+			.select2-selection__arrow {
+			    height: 40px !important;
+
+			}
+			.noshow{
+				display: none !important;
+			}
+			.justshow{
+				display: block;
+			}
+			@media (max-width: 600px) {
+				.justshow{
+					display: none !important;
+				}
+				.noshow{
+					display: block !important;
+				}
+			}
+			.ribbon-holder {
+			  overflow: hidden;
+			  position: relative
+			}
+			.ribbon {
+			  position: absolute;
+			  background: red;
+			  color: white;
+			  transform: rotate(-45deg);
+			  text-align: center;
+			  top: 32px;
+			  left: -32px;
+			  width: 145px;
+			}
+			.sl2{
+				width: 200px !important;
+			}
+</style>
+</head>
+<body class="m-0 p-0">
+	<header>
+	<!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <script type="text/javascript">
+        	function func(){
+        		if ($(window).width() <= 600) {
+            		$(".Menu").addClass('collapse');
+            	}
+	            else{
+            		$(".Menu").removeClass('collapse');
+            	}
+        	}
+        	$(document).ready(function() {
+        		func()
+            $(window).on('resize', function() {
+            	console.log($(window).width())
+            	func()
+            })
+	        	$(".navbar-toggler").click(function(){
+	        		if ($(".Menu").hasClass('collapse')) {
+	        			$(".Menu").removeClass('collapse');
+	        		}
+	        		else{
+	        			$(".Menu").addClass('collapse');
+	        		}
+	        		
+	        	})
+        	});
+        </script>
+        <!-- Brand -->
+        <a class="navbar-brand" href="/home">
+          <img src="{{url_for('static', filename='assets/images/carsoko.png')}}" height="25" alt="" loading="lazy" />
+        </a>
+        <!-- Search form -->
+        <div class="Menu container-fluid">
+                
+                <ul class="navbar-nav">
+                  <div class="navbar-collapse navbar-nav" id="navbarScroll">
+
+                  <li class="nav-item p-1">
+                    <a class="nav-link active" aria-current="page" href="/home" role="button">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle active"
+                      href="#"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-mdb-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Buy Car
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                      <li>
+                        <a class="dropdown-item" href="/home#sc">New Cars For Sale</a>
+                      </li>
+                      <li>
+                      	<a class="dropdown-item" href="#">Used Cars For Sale</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Foreign Used Cars</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Refurished Cars</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Resell Cars</a>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                  <li class="nav-item dropdown p-1">
+                    <a class="nav-link active" href="#" role="button">Car Tracking</a>
+                  </li>
+                  <li class="nav-item dropdown p-1">
+                    <a class="nav-link active" href="#" role="button">Insurance</a>
+                  </li>
+                  <li class="nav-item p-1">
+                    <a class="nav-link active" href="#" role="button">Imports</a>
+                  </li>
+                  <li class="nav-item p-1">
+                    <a class="nav-link active" href="#" role="button">Trade In</a>
+                  </li>
+                  <li class="nav-item dropdown p-1">
+                    <a class="nav-link active" href="#" role="button">Contact Us</a>
+                  </li>
+                  <li class="nav-item dropdown p-1">
+                    <a class="nav-link active" href="#footer-1" role="button">About Us</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link  active"
+                      href="#home"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                    >
+                      <button class="btn btn-outline-danger rounded-circle p-1" style="width: 30px; height: 30px;"><i class="fa fa-search "></i></button>
+                    </a>
+             
+              </li>
+          </div>
+      </ul>
+  </div>
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <!-- Notification dropdown -->
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+              role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-bell"></i>
+              <span class="badge rounded-pill badge-notification bg-danger">1</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Some news</a></li>
+              <li><a class="dropdown-item" href="#">Another news</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-3 me-lg-0" href="#">
+              <i class="fas fa-fill-drip"></i>
+            </a>
+          </li>-->
+          <!-- Icon dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="united kingdom flag m-0"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English
+                  <i class="fa fa-check text-success ms-2"></i></a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="poland flag"></i>Polski</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="china flag"></i>中文</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="japan flag"></i>日本語</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="germany flag"></i>Deutsch</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="france flag"></i>Français</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="spain flag"></i>Español</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="russia flag"></i>Русский</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="portugal flag"></i>Português</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Avatar -->
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                alt="" loading="lazy" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>-->
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+<div class="bg-clear bt1 hider position-fixed text-white" style="transform: rotate(-90deg);text-align: center; top: 45%; z-index: 700; left: -55px;">
+	<button class="btn-primary btn btn-md s12">
+	
+		<i class="me-1 fa fa-search"></i> 
+		QUICK SEARCH
+	
+	</button>
+</div>
+<style type="text/css">
+	.hider{
+		display: none;
+	}
+</style>
+
+<div class="searchdiv hider position-fixed border border-danger bg-light p-3 w-50" style="top: 20%; left: 40px; z-index: 650;">
+	<div class="d-flex justify-content-between">
+	<h5>Search</h5>
+	<button type="button" class="btn-close s13"  aria-label="Close"></button>
+</div>
+<div>
+	<h2><strong>Find Your <strong class="text-danger">Perfect </strong>Car</strong></h2>
+	<em>Our range of vehicles is capable of finding every possible car you like to buy.</em>
+</div>
+<hr>
+<div>
+	<form action="/search"  method="post">
+        <div class="row " style="border-radius: 30px;">
+        <div class="col-lg-4 col-md ">
+         <label class="form-label text-center" for="name">Car {{form.make.label}}</label><br>
+	     {{form.make(class="make rounded-5 col-md-12 form-control sl2",id="make1")}}
+		 {% for error in form.make.errors %} 
+		 <span style="color:red;">{{error}} </span> 
+		 {% endfor %}
+	  </div>
+	  <div class="col-lg-4 col-md ">
+	  	 <label class="form-label text-center" for="name">Car {{form.model.label}}</label><br>
+	     {{form.model(class="model rounded-5  form-control sl2",id="model1")}}
+		 {% for error in form.model.errors %} 
+		 <span style="color:red;">{{error}} </span> 
+		 {% endfor %}
+	  </div>
+	  <div class="col-lg-4 col-md ">
+	  	 <label class="form-label text-center" for="name">{{form.price.label}}(Kshs)</label><br>
+	     {{form.price(class="price rounded-5 w-100  form-control sl2",id="price1")}}
+		 {% for error in form.price.errors %} 
+		 <span style="color:red;">{{error}} </span> 
+		 {% endfor %}
+	  </div>
+	</div>
+	  <div class="col-lg col-md ">
+	  	<label class="form-label text-center" for="sub2"></label><br>
+	  	<button type="submit" id="sub2" class="btn col-12 btn-danger" style="height: 40px;border-radius: 30px !important;" name="submit"><i class="bi bi-search"></i></button>
+	  </div>
+	  	
+	</div>
+      	</form>
+      	<hr>
+</div>
+</div>
+<div style="margin-top: 70px"></div>
+{% block main %}
+{% endblock %}
+
+<section id="footer-1" class="text-white bg-dark">
+	<div class="container ">
+		<div class="row py-4">
+			<div class="col-md">
+				<h5>SUBSCRIBE FOR OUR NEWSLETTER</h5>
+				<hr>
+				<div>
+				<form>
+				<div class=" mb-4">
+				  <input type="text" id="form7Example1" class="form-control rounded-pill" placeholder="Name">
+				</div>
+				<div class=" mb-4">
+				  <input type="email" id="form7Example2" class="form-control rounded-pill" placeholder="Email address">
+				</div>
+				<button type="submit" class="btn btn-primary rounded-pill btn-block mb-3">Subscribe</button>
+			</form>
+				</div>
+			</div>
+			<div class="col-md">
+				<h5>QUICK LINKS</h5>
+				<hr>
+				<div>
+					
+				</div>
+			</div>
+			<div class="col-md">
+				<h5>HELP AND SUPPORT</h5>
+				<hr>
+				<div>
+					
+				</div>
+			</div>
+			<div class="col-md">
+				<h5>ABOUT US</h5>
+				<hr>
+				<div>
+					<span>
+						We are a Kenya premier car mart and we deal with highend SUV cars. Ranging from Toyota Prados, Landcruisers, Range Rovers, BMWs and many more but we pride ourselves to be home of Landcruisers.<br>Contuct us today for Inquiries.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="p-2 bg-success ">
+		<a href="$" class="nav-link text-white active" style="text-decoration: none;">© 2022 Carsoko Ltd. All Rights Reserved Site Developed by GreenBear Technologies</a>
+	</div>
+</section>
+</body>
+
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+$(document).scroll(function() {
+var topheight = $('#home').prop('scrollHeight')
+var position = $(window).scrollTop();
+$('.bt1').removeClass('hider')
+if (position <= (topheight) ) {
+	$('.bt1').addClass('hider')
+	$('.searchdiv').addClass('hider')
+}
+else if(position > (topheight)){
+	$('.bt1').removeClass('hider')
+	console.log("TWO")
+}
+});
+$('.s12').click(function(event) {
+	event.preventDefault();
+	$('.searchdiv').removeClass('hider')
+})
+$('.s13').click(function(event) {
+	event.preventDefault();
+	$('.searchdiv').addClass('hider')
+})
+$('.make').select2({placeholder:"Make"});
+$('.model').select2({placeholder:"Model"});
+$('.price').select2({placeholder:"Max Price"});
+$('.make').change(function(){
+	var carmake = $('.make').val();
+	console.log(carmake)
+	$.ajax({
+    url:"/updater/"+carmake,
+    success:function(data){
+    	//console.log(data);
+    	for (item of data.models){
+    		option = new Option(item.name,item.id, true, true)
+    		$(".model").append(option).trigger('change')	
+    }
+}
+});
+});
+})
+    var socket = io();
+    socket.on('connect', function() {
+        socket.send({'data': 'I\'m connected!'});
+    });
+    socket.on('received', function(data) {
+        console.log(data)
+    });
+    
+    $('.msgsubmit').click(function(event) {
+    	event.preventDefault();
+    	socket.emit('tally', {
+    		'name':$('#msgname').val(),
+    		'email':$('#msgemail').val(),
+    		'phone':$('#msgphone').val(),
+    		'message':$('#msgmessage').val()})
+    })
+</script>
+</html>

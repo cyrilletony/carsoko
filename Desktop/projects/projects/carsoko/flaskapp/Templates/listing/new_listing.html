@@ -1,0 +1,472 @@
+{% extends "app/listing.html" %}
+{% block listing %}
+<link rel="stylesheet" type="text/css" href="">
+<style type="text/css">
+</style>
+<script type="text/javascript">
+	$('#new_listing').addClass('active')
+</script>
+ {% with messages = get_flashed_messages() %}
+ {% if messages %}
+ {% for message in messages %}
+ <div style="z-index: 600; right:20px;" class="alert position-absolute alert-success alert-dismissable" role="alert">  <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span>  </button>
+ {{message}}
+ </div>
+ {% endfor  %}
+ {% endif %}
+ {% endwith %}
+<div class="mb-0 h-100">
+<div class="row justify-content-center h-100 mb-0">
+<div class="col text-center p-0 mb-0 h-100 mt-0 mb-2">
+<div class="card container-fluid h-100 mb-0 pb-0">
+<form action="/addlisting" id="msform" method="post" enctype="multipart/form-data" >
+{{form.csrf_token}}
+<!-- progressbar -->
+<ul id="progressbar">
+<li class="active" id="account"><strong>Vehicle</strong></li>
+<li id="personal"><strong>Details</strong></li>
+<li id="personal2"><strong>Images</strong></li>
+<li id="payment"><strong>Features</strong></li>
+<li id="confirm"><strong>Finish</strong></li>
+</ul>
+<div class="progress col mx-2">
+<div class="progress-bar proress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<fieldset class="px-2 col-12 ">
+<div class="form-card text-start">
+
+<div class=" mb-2">
+<label class="form-label" for="carmake">{{form.name.label}}/{{form.make.label}}</label>
+ {{form.make(class="form-control sl",id="carmake")}}
+ 
+ {% for error in form.make.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+
+ <div class="row">
+ <div class="mb-2 col-md">
+<label class="form-label " for="condition">{{form.condition.label}}</label>
+ {{form.condition(class="form-control sl", id="condition", data_live_search="true")}}
+ {% for error in form.condition.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ <div class="mb-2 col-md">
+ <label class="form-label " for="car_type">{{form.car_type.label}}</label>
+ {{form.car_type(class="form-control sl",id="car_type", data_live_search="true")}}
+ 
+ {% for error in form.car_type.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+
+ <div class=" mb-2 col-md">
+ 	<label class="form-label" for="carmodel">{{form.model.label}}</label>
+ {{form.model(class="form-control",id="carmodel", data_live_search="true")}}
+ 
+ {% for error in form.model.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-2 col-md">
+	<label class="form-label" for="year">{{form.year.label}}</label>
+ {{form.year(class="form-control",id="year",autocomplete="off")}}
+ 
+ {% for error in form.year.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ </div>
+ <div class="mb-2">
+<label class="form-label " for="textarea">{{form.description.label}}</label>
+{{form.description(class="form-control",id="textarea")}}
+ {% for error in form.description.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+</div>
+<input type="button" name="next" class="btn btn-success next me-3 action-button" value="Next" />
+</fieldset>
+<fieldset class="px-2 col-12">
+<div class="form-card text-start">
+ <div class="row">
+ <div class=" mb-4 col-md">
+ 	<label class="form-label" for="price">{{form.price.label}}</label>
+ {{form.price(class="form-control",id="price")}}
+ 
+ {% for error in form.price.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+<label class="form-label " for="offer_type">{{form.offer_type.label}}</label><br>
+ {{form.offer_type(class="form-control sl",id="offer_type", data_live_search="true")}}
+ 
+ {% for error in form.offer_type.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ <div class=" mb-4 col-md">
+ 	<label class="form-label " for="drive_type">{{form.drive_type.label}}</label>
+ {{form.drive_type(class="form-control sl",id="drive_type", data_live_search="true")}}
+ 
+ {% for error in form.drive_type.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+	<label class="form-label " for="transmission">{{form.transmission.label}}</label>
+ {{form.transmission(class="form-control sl",id="transmission", data_live_search="true")}}
+ 
+ {% for error in form.transmission.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ </div>
+ <div class="row">
+ <div class=" mb-4 col-md">
+ 	<label class="form-label " for="fuel_type">{{form.fuel_type.label}}</label>
+ {{form.fuel_type(class="form-control sl",id="fuel_type", data_live_search="true")}}
+ 
+ {% for error in form.fuel_type.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+	<label class="form-label" for="mileage">{{form.mileage.label}}</label>
+ {{form.mileage(class="form-control",id="mileage")}}
+ 
+ {% for error in form.mileage.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+
+ <div class=" mb-4 col-md">
+ 	<label class="form-label " for="engine_type">{{form.engine_type.label}}</label>
+ {{form.engine_type(class="form-control sl",id="engine_type")}}
+ 
+ {% for error in form.engine_type.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+	<label class="form-label " for="cylinders">{{form.cylinders.label}}</label>
+ {{form.cylinders(class="form-control sl",id="cylinders", data_live_search="true")}}
+ 
+ {% for error in form.cylinders.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ </div>
+ <div class="row">
+ <div class=" mb-4 col-md">
+ 	<label class="form-label " for="color">{{form.color.label}}</label>
+ {{form.color(class="form-control sl",id="color", data_live_search="true")}}
+ 
+ {% for error in form.color.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+	<label class="form-label " for="doors">{{form.doors.label}}</label>
+ {{form.doors(class="form-control sl",id="doors", data_live_search="true")}}
+ 
+ {% for error in form.doors.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+ <div class=" mb-4 col-md">
+ <label class="form-label" for="VIN">{{form.VIN.label}}</label>
+ {{form.VIN(class="form-control",id="VIN")}}
+ 
+ {% for error in form.VIN.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+<div class=" mb-4 col-md">
+ <label class="form-label" for="featured">Featured</label><br>
+ <input type="checkbox" class="form-check-input" name="featured">
+ </div>
+</div>
+</div>
+<input type="button" name="next" class="btn btn-success next me-3 action-button" value="Next" /> 
+<input type="button" name="previous" class="btn btn-danger me-3 previous action-button-previous" value="Previous" /> 
+</fieldset>
+<fieldset class="px-2 col-12">
+<div class="form-card text-start">
+ <label class="form-label" for="price"><i class="fa fa-image me-3"></i><span>Gallery</span></label>
+ 
+<div class="row">
+<div class="col-md form-outline rounded-4 p-0 m-1 front img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" style="color:white; background-size: 100%;"  for="front">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload front view</p>
+		<input type="file" class="files" hidden="" name="front" accept="image/*" id="front" />
+	</label>
+		
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 back img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" for="back" style="color:white; background-size: 100%;">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload back view</p>
+		<input type="file" class="files" hidden="" name="back" accept="image/*" id="back" />
+	</label>
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 frontleft img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" style="color:white; background-size: 100%;"  for="frontleft">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload front left view</p>
+		<input type="file" class="files" hidden="" name="frontleft" accept="image/*" id="frontleft" />
+	</label>
+		
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 frontright img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" for="frontright" style="color:white; background-size: 100%;">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload front right view</p>
+		<input type="file" class="files" hidden="" name="frontright" accept="image/*" id="frontright" />
+	</label>
+</div>
+</div>
+<div class="row">
+<div class="col-md form-outline rounded-4 p-0 m-1 backleft img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" style="color:white; background-size: 100%;"  for="backleft">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload back left view</p>
+		<input type="file" class="files" hidden="" name="backleft" accept="image/*" id="backleft" />
+	</label>
+		
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 backright img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" for="backright" style="color:white; background-size: 100%;">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload back right view</p>
+		<input type="file" class="files" hidden="" name="backright" accept="image/*" id="backright" />
+	</label>
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 left img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" style="color:white; background-size: 100%;"  for="left">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload left view</p>
+		<input type="file" class="files" hidden="" name="left" accept="image/*" id="left" />
+	</label>
+		
+</div>
+<div class="col-md form-outline rounded-4 p-0 m-1 right img" style="height: 160px; background-color:#e5e5cc;">
+	<label class="col-md h-100 rounded-4 w-100 p-0 m-0 bg-clear" for="right" style="color:white; background-size: 100%;">
+		<p class="text-center my-4 py-4"><i class="bi bi-cloud-arrow-up fs-2"></i><br>Upload right view</p>
+		<input type="file" class="files" hidden="" name="right" accept="image/*" id="right" />
+	</label>
+</div>
+</div>
+</div> 
+<input type="button" name="next" class="btn btn-success next me-3 action-button" value="Next" /> 
+<input type="button" name="previous" class="btn btn-danger me-3 previous action-button-previous" value="Previous" />
+</fieldset>
+<fieldset class="px-2 col-12">
+<div class="form-card text-start">
+<div class="mb-4">
+ <label class="form-label" for="features">{{form.features.label}}</label>
+ <div class="row">
+ {% for id, feature in form.features.choices%}
+ <div class=" col-lg-3 col-md-6 col-sm-6 form-check">
+  <input class="form-check-input" name="features" type="checkbox" value="{{id}}" id="Check{{id}}" />
+  <label class="form-check-label" for="Check{{id}}">{{feature}}</label>
+</div>
+ {%endfor%}
+</div>
+ {% for error in form.features.errors %} 
+ <span style="color:red;">{{error}} </span> 
+ {% endfor %}
+</div>
+
+</div>
+
+<input type="button" name="previous" class="btn btn-danger me-3 previous action-button-previous" value="Previous" />
+<input type="submit" name="submit" class="btn btn-success me-3 action-button" value="Submit Details" />
+</fieldset>
+<fieldset class="px-2 col-12">
+<div class="form-card">
+<h2 class="text-center">
+<strong>SUCCESS !</strong></h2> <br>
+<div class="row justify-content-center">
+<div class="col-3"><i class="fa fa-check-circle"></i></div>
+</div>
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+</div>
+</div>
+ </form>
+</div>
+</div>
+<script>
+tinymce.init({
+  selector: '#textarea',
+  plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+  toolbar_mode: 'floating',
+});
+$("#year").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+$(document).ready(function(){
+ $('.sl').selectize({placeholder:"Select an Option"})//,sortField: 'text'});
+ $('#featuresed').select2({placeholder:"Select Features",allowClear:true})
+
+console.log('here----')
+ $('#carmake').change(function(){
+ 	var selct = $('#carmodel').selectize()[0].selectize
+	selct.destroy();
+	selct.clearOptions();
+	selct.renderCache = {};
+ 	var carmake = $('#carmake').val();
+ 	console.log(carmake)
+ 	$.ajax({
+        url:"/updater/"+carmake,
+        success:function(data){
+        	console.log(data);
+        	options = '';
+        	for (item of data.models){
+        		options += ' <option value="'+item.id+'">'+item.name+'</option>'
+        	}
+        	$('#carmodel').html(options);
+        	$('#carmodel').selectize({
+          sortField: 'text',placeholder:"Select an Option",persist: false
+    });
+        }
+    });
+ });
+});
+
+//-----------------------------------------------------
+const dt = new DataTransfer(); 
+$(".front input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.front label'));
+	}	
+})
+$(".back input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.back label'));
+	}	
+})
+$(".frontleft input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.frontleft label'));
+	}	
+})
+$(".frontright input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.frontright label'));
+	}	
+})
+$(".backleft input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.backleft label'));
+	}	
+})
+$(".backright input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.backright label'));
+	}	
+})
+$(".left input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.left label'));
+	}	
+})
+$(".right input").on('change', function(e){
+	if (this.files) {
+		readImg(this.files[0],$('.right label'));
+	}	
+})
+function readImg(file, place) {
+	if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+      return alert(file.name + " is not an image");
+    }
+    var reader = new FileReader();
+    reader.addEventListener("load", function() {
+      var image = new Image();
+      image.height = 160;
+      //image.title  = this.files.item(i).name;
+      image.src    = this.result;
+      place.css("background-image", "url('"+this.result+"')");
+      console.log(this.result)
+    });
+    reader.readAsDataURL(file)
+};
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+var current = 1;
+var steps = $("fieldset").length;
+
+setProgressBar(current);
+
+$(".next").click(function(){
+
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//Add Class Active
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show();
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({'opacity': opacity});
+},
+duration: 500
+});
+setProgressBar(++current);
+});
+
+$(".previous").click(function(){
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//Remove class active
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show();
+
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+previous_fs.css({'opacity': opacity});
+},
+duration: 500
+});
+setProgressBar(--current);
+});
+
+function setProgressBar(curStep){
+var percent = parseFloat(100 / steps) * curStep;
+percent = percent.toFixed();
+$(".progress-bar")
+.css("width",percent+"%")
+}
+
+$(".submit").click(function(){
+return false;
+})
+</script>
+
+{% endblock%}

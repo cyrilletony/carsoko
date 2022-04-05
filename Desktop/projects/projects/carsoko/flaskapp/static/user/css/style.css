@@ -1,0 +1,184 @@
+
+.image img, .payment-method img{
+height: 30px;
+width: 30px;
+}
+#footer{
+font-size:14px;
+}
+.dropdown-menu {
+min-width: 200px;
+}
+.dropdown-menu.columns-2 {
+min-width: 700px;
+}
+
+.multi-column-dropdown {
+list-style: none;
+margin: 0px;
+padding: 0px;
+}
+.multi-column-dropdown li a {
+display: block;
+clear: both;
+line-height: 1.428571429;
+color: #333;
+white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+text-decoration: none;
+color: #262626;
+background-color: #999;
+}
+
+@media (max-width: 767px) {
+.dropdown-menu.multi-column {
+min-width: 240px !important;
+overflow-x: hidden;
+}
+}
+.imageClass{
+}
+.file-block{
+	width: auto;
+	border: 2px solid blue;
+	margin: 3px !important;
+	border-radius: 5px;
+}
+.images label{
+	border: 2px solid blue;
+	margin: 3px !important;
+	border-radius: 5px;
+}
+#heading {
+text-transform: uppercase;
+color: #00ccff;
+font-weight: normal
+}
+
+#msform {
+position: relative;
+margin-top: 20px
+}
+
+#msform fieldset {
+background: white;
+border: 0 none;
+border-radius: 0.5rem;
+box-sizing: border-box;
+float: left;
+padding-bottom: 15px;
+position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+display: none
+}
+#msform .action-button {
+float: right
+}
+#msform .action-button-previous {
+float: left
+}
+
+.fs-title {
+font-size: 20px;
+color: #00ccff;
+margin-bottom: 15px;
+font-weight: normal;
+text-align: left
+}
+
+.steps {
+font-size: 20px;
+color: gray;
+margin-bottom: 10px;
+font-weight: normal;
+text-align: right
+}
+
+.fieldlabels {
+color: gray;
+text-align: left
+}
+
+#progressbar {
+margin-bottom: 15px;
+overflow: hidden;
+color: lightgrey
+}
+
+#progressbar .active {
+color: #00ccff
+}
+
+#progressbar li {
+list-style-type: none;
+font-size: 15px;
+width: 20%;
+float: left;
+position: relative;
+font-weight: 400
+}
+
+#progressbar #account:before {
+font-family: FontAwesome;
+content: "\f1b9"
+}
+
+#progressbar #personal:before {
+font-family: FontAwesome;
+content: "\f05a"
+}
+#progressbar #personal2:before {
+font-family: FontAwesome;
+content: "\f030"
+}
+
+#progressbar #payment:before {
+font-family: FontAwesome;
+content: "\f085"
+}
+
+#progressbar #confirm:before {
+font-family: FontAwesome;
+content: "\f00c"
+}
+
+#progressbar li:before {
+width: 40px;
+height: 40px;
+line-height: 35px;
+display: block;
+font-size: 16px;
+color: #ffffff;
+background: lightgray;
+border-radius: 50%;
+margin: 0 auto 5px auto;
+padding: 2px
+}
+
+#progressbar li:after {
+content: '';
+width: 100%;
+height: 2px;
+background: lightgray;
+position: absolute;
+left: 0;
+top: 25px;
+z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+background: #00ccff
+}
+
+.progress {
+height: 10px
+}
+
+.progress-bar {
+background-color: #00ccff
+}
+
