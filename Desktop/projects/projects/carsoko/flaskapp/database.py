@@ -34,11 +34,11 @@ class Listing(db.Model):
 	color_id = db.Column(db.Integer)
 	doors_id = db.Column(db.Integer)
 	features = db.Column(db.PickleType())
-	safety_features = db.Column(db.String(100000000))
+	safety_features = db.Column(db.String(10485760))
 	VIN = db.Column(db.String(100))
 	images = db.Column(db.PickleType())
-	location = db.Column(db.String(100000000))
-	attachments = db.Column(db.String(100000000))
+	location = db.Column(db.String(10485760))
+	attachments = db.Column(db.String(10485760))
 	author_id = db.Column(db.String(100))
 
 	added_date = db.Column(db.DateTime, default=datetime.now)
@@ -50,34 +50,34 @@ class Listing(db.Model):
 class Condition(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class CarType(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class CarMake(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 class EngineType(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class CarModel(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	car_make_id = db.Column(db.Integer)
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
@@ -85,63 +85,63 @@ class CarModel(db.Model):
 class OfferType(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class DriveType(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class Transmission(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class FuelType(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class Cylinders(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class Colors(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class Doors(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class Features(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
 class SafetyFeatures(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(100))
-	description = db.Column(db.String(100000000))
+	description = db.Column(db.String(10485760))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
 
